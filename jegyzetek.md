@@ -55,6 +55,8 @@
 
 - létrehozunk egy post endpointot ami a usert elmenti a mongodb adatbázisba
 
-#### Testing user registration with Postman
+#### 7. Login API
 
--
+- post endpoint ami egy usert fogad
+- a findOne()-nak átadjuk a user email-jét hogy találunk-e ilyet a db-ben
+- kezeljük az eseteket
