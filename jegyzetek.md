@@ -1,4 +1,4 @@
-#### Introduction
+#### 1. Introduction
 
 - MEAN Stack
 
@@ -15,7 +15,7 @@
   - ha a tagoknak szóló eseményeket akarjuk megnézni be kell jelentkezni
   - létrehozhatunk új felhasználót
 
-#### Course Overview
+#### 2.Course Overview
 
 - express szerver, mongoDb beállítása
 
@@ -30,18 +30,18 @@
 - Angular app létrehozása
 - authentikáció
 
-#### Express server
+#### 3. Express server
 
 - server.js-ben importáljuk az express-t
 - létrehozunk egy get útvonalat
 - hozzáadunk egy routes mappát ahol a route-okat fogjuk tárolni
 
-#### MongoDB
+#### 4. MongoDB
 
 - létrehozunk egy új adatbázist eventsdb néven
 - hozzáadunk egy collectiont users néven
 
-#### Mongoose
+#### 5. Mongoose
 
 - mongoose: mongodb object mapping
 
@@ -50,3 +50,11 @@
 - importáljuk a mongoose-t
 - a mongoose.connect()-nek megadjuk az adatbázis connection stringjét
 - a videóban át lehetett adni a connection()-nek egy callbacket error kezelésre, de már nem lehet úgyhogy try catch ben await-elni kell a connectiont
+
+#### 6. Registration API
+
+- létrehozunk egy post endpointot ami a usert elmenti a mongodb adatbázisba
+
+#### Testing user registration with Postman
+
+-
