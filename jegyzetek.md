@@ -31,3 +31,22 @@
 - authentikáció
 
 #### Express server
+
+- server.js-ben importáljuk az express-t
+- létrehozunk egy get útvonalat
+- hozzáadunk egy routes mappát ahol a route-okat fogjuk tárolni
+
+#### MongoDB
+
+- létrehozunk egy új adatbázist eventsdb néven
+- hozzáadunk egy collectiont users néven
+
+#### Mongoose
+
+- mongoose: mongodb object mapping
+
+  - az adatbázis adatait js objectté alakítja amit használhatunk az appunkban
+
+- importáljuk a mongoose-t
+- a mongoose.connect()-nek megadjuk az adatbázis connection stringjét
+- a videóban át lehetett adni a connection()-nek egy callbacket error kezelésre, de már nem lehet úgyhogy try catch ben await-elni kell a connectiont
