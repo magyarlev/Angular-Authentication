@@ -62,3 +62,5 @@
 - kezeljük az eseteket
 
 #### 8. Fetch api
+
+- hardcodeolt eventeknek írunk get endpointot
