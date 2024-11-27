@@ -60,3 +60,5 @@
 - post endpoint ami egy usert fogad
 - a findOne()-nak átadjuk a user email-jét hogy találunk-e ilyet a db-ben
 - kezeljük az eseteket
+
+#### 8. Fetch api
