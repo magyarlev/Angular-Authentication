@@ -64,3 +64,16 @@
 #### 8. Fetch api
 
 - hardcodeolt eventeknek írunk get endpointot
+
+#### 9. Frontend
+
+- létrehozzuk az angular appot
+- létrehozunk komponenseket (login, register, events stb..)
+- a routok közé felvesszük az útvonalakat és az azokhoz tartozó komponenseket
+
+- azz app.component.html-t feltöltjük
+
+  - responsive toggle menü és oldal neve
+  - a nav elemeknek megadjuk a routerLink-ben hogy hova navigáljanak és a routerLinkActive rárak egy active css osztályt ha az útvonal aktív
+
+- router-outlet ahol az aktív route komponense fog betölteni
