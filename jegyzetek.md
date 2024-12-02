@@ -65,7 +65,7 @@
 
 - hardcodeolt eventeknek írunk get endpointot
 
-#### 9. Frontend
+#### 9. Angular frontend alapok
 
 - létrehozzuk az angular appot
 - létrehozunk komponenseket (login, register, events stb..)
@@ -77,3 +77,18 @@
   - a nav elemeknek megadjuk a routerLink-ben hogy hova navigáljanak és a routerLinkActive rárak egy active css osztályt ha az útvonal aktív
 
 - router-outlet ahol az aktív route komponense fog betölteni
+
+#### 10. register component
+
+- létrehozunk egy formot ahova email címet és jelszót lehet írni
+- ngModel two-way bindinggel átadjuk a registerUserDatanak az inputba írt elemeket és a registerUser() kiírja a konzolra
+
+#### 11. auth service
+
+- létrehozunk egy service-t amit a backenddel kommunikál
+
+- FONTOS!: `NullInjectorError: No provider for _HttpClient!`
+
+  - ezt a `provideHttpClient()` app.config providerek közé felvevéssel tudjuk megoldani
+
+- a szerverhez hozzá kell adni a cors-ot mert a szerver és a frontent különböző porton van
