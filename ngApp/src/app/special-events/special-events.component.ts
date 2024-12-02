@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-special-events',
   standalone: true,
   imports: [],
-  templateUrl: './special.component.html',
-  styleUrl: './special.component.scss',
+  templateUrl: './special-events.component.html',
+  styleUrl: './special-events.component.scss',
 })
 export class SpecialEventsComponent {}
