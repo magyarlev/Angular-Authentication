@@ -1,13 +1,13 @@
 import express, { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import User from "../modules/user";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 const router = express.Router();
 const db = "mongodb://localhost:27017/eventdb";
 
 export interface CustomRequest extends Request {
-  userId: string;
+  userId: string | JwtPayload;
 }
 
 mongoose
@@ -20,23 +20,26 @@ mongoose
   });
 
 export const verifyToken = async (
-  req: CustomRequest,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
   if (!req.headers.authorization) {
-    return res.status(401).send("Unauthorized request");
+    res.status(401).send("Unauthorized request");
+    throw new Error();
   }
   // itt ami beérkezik: 'Bearer *valamilyen token*
   // ezért a space mentén szétválasztjuk és az 1. indexen lesz a tokenünk
   let token = req.headers.authorization.split(" ")[1];
   if (token === "null") {
-    return res.status(401).send("Unauthorized request");
+    res.status(401).send("Unauthorized request");
+    throw new Error();
   }
 
   let payload = jwt.verify(token, "secretKey");
   if (!payload) {
-    return res.status(401).send("Unauthorized request");
+    res.status(401).send("Unauthorized request");
+    throw new Error();
   }
 
   (req as CustomRequest).userId = payload as string;
@@ -162,7 +165,7 @@ router.get("/events", (req, res) => {
   res.json(events);
 });
 
-router.get("/special", verifyToken, (req: CustomRequest, res: Response) => {
+router.get("/special", verifyToken, (req: Request, res: Response) => {
   let specialEvents = [
     {
       _id: "sp1ev1",
