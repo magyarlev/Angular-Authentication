@@ -87,8 +87,18 @@
 
 - létrehozunk egy service-t amit a backenddel kommunikál
 
+- implementáljuk a login és a register user metódusokat amik a backendnek elküldik a user adatait
+
+- a komponensek feliratkoznak a metódusokra és kiírják a konzolra a visszaérkező választ (ami egy user)
+
 - FONTOS!: `NullInjectorError: No provider for _HttpClient!`
 
   - ezt a `provideHttpClient()` app.config providerek közé felvevéssel tudjuk megoldani
 
 - a szerverhez hozzá kell adni a cors-ot mert a szerver és a frontent különböző porton van
+
+#### 12. events service
+
+- létrehozunk egy servicet ami lekéri a backendről a normál és a special eventeket
+
+- a megfelelő komponensben feliratkozunk

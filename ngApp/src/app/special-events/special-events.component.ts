@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-special-events',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: './special-events.component.html',
   styleUrl: './special-events.component.scss',
 })
-export class SpecialEventsComponent {}
+export class SpecialEventsComponent {
+  eventService = inject(EventService);
+
+  specialEvents = [];
+
+  ngOnInit() {
+    this.eventService.getSpecialEvents().subscribe({
+      next: (res) => (this.specialEvents = res),
+      error: (err) => console.log(err),
+    });
+  }
+}
