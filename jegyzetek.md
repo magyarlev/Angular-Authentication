@@ -145,3 +145,9 @@
 - a tokeneket elmentjük a localstorage-ba
 
 - a login és register oldalon ha regisztrálunk vagy bejelentkezünk akkor a routing a special events komponense navigál minket
+
+#### 16. route guard
+
+- létrehozunk egy guardot amiben ellenőrizzük hogy van e 'token' a localstorage-ban
+
+- ha még nem vagyunk bejelentkezve és nincs a localStorage-ben elmentve token akkor a routeguard átirányít minket a login oldalra
