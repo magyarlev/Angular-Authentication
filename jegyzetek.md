@@ -151,3 +151,10 @@
 - létrehozunk egy guardot amiben ellenőrizzük hogy van e 'token' a localstorage-ban
 
 - ha még nem vagyunk bejelentkezve és nincs a localStorage-ben elmentve token akkor a routeguard átirányít minket a login oldalra
+
+- ha van token akkor megnézhetjük a special eventeket
+- ellenőriznünk kell hogy érvényes-e a token
+
+- a böngészőből a szerverre küldjük a tokent az angular token interceptorral
+- az interceptor figyeli a http requesteket és átalakítva küldi tovább a szerverre
+- a mi intercepotunk megnézi hogy van-e token a localstorage-ban és azt küldi el a szervernek

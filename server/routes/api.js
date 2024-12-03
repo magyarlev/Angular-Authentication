@@ -13,6 +13,26 @@ try {
   console.error(error);
 }
 
+function verifyToken(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(401).send("Unauthorized request");
+  }
+  // itt ami beérkezik: 'Bearer *valamilyen token*
+  // ezért a space mentén szétválasztjuk és az 1. indexen lesz a tokenünk
+  let token = req.headers.authorization.split(" ")[1];
+  if (token === "null") {
+    return res.status(401).send("Unauthorized request");
+  }
+
+  let payload = jwt.verify(token, "secretKey");
+  if (!payload) {
+    return res.status(401).send("Unauthorized request");
+  }
+
+  req.userId = payload.subject;
+  next();
+}
+
 router.get("/", (req, res) => {
   res.send("From API route");
 });
@@ -132,7 +152,7 @@ router.get("/events", (req, res) => {
   res.json(events);
 });
 
-router.get("/special", (req, res) => {
+router.get("/special", verifyToken, (req, res) => {
   let specialEvents = [
     {
       _id: "sp1ev1",

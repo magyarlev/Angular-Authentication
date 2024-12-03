@@ -18,7 +18,7 @@ export const routes: Routes = [
   {
     path: 'special',
     component: SpecialEventsComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
   },
   {
     path: 'login',
