@@ -21,7 +21,6 @@ export class RegisterComponent {
   registerUser() {
     this._authService.registerUser(this.registerUserData).subscribe({
       next: (res) => {
-        console.log(res);
         localStorage.setItem('token', res.token);
         this._router.navigate(['/special']);
       },

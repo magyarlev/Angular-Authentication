@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import api from "./routes/api.js";
 import cors from "cors";
+import api from "./routes/api";
 
 const PORT = 3000;
 const app = express();

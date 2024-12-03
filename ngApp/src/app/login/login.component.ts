@@ -20,7 +20,6 @@ export class LoginComponent {
   loginUser() {
     this.authService.loginUser(this.loginUserData).subscribe({
       next: (res) => {
-        console.log(res);
         localStorage.setItem('token', res.token);
         this._router.navigate(['/special']);
       },

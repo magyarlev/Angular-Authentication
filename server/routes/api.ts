@@ -1,19 +1,29 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
-import User from "../modules/user.js";
+import User from "../modules/user";
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
-const db = "mongodb://localhost:27017/";
+const db = "mongodb://localhost:27017/eventdb";
 
-try {
-  await mongoose.connect(db);
-  console.log("Connected to mongodb");
-} catch (error) {
-  console.error(error);
+export interface CustomRequest extends Request {
+  userId: string;
 }
 
-function verifyToken(req, res, next) {
+mongoose
+  .connect(db)
+  .then(() => {
+    console.log("Connected to mongodb");
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+export const verifyToken = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
   if (!req.headers.authorization) {
     return res.status(401).send("Unauthorized request");
   }
@@ -29,9 +39,9 @@ function verifyToken(req, res, next) {
     return res.status(401).send("Unauthorized request");
   }
 
-  req.userId = payload.subject;
+  (req as CustomRequest).userId = payload as string;
   next();
-}
+};
 
 router.get("/", (req, res) => {
   res.send("From API route");
@@ -152,7 +162,7 @@ router.get("/events", (req, res) => {
   res.json(events);
 });
 
-router.get("/special", verifyToken, (req, res) => {
+router.get("/special", verifyToken, (req: CustomRequest, res: Response) => {
   let specialEvents = [
     {
       _id: "sp1ev1",
