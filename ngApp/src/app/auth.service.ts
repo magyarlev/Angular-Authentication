@@ -11,10 +11,10 @@ export class AuthService {
   private _loginUrl = 'http://localhost:3000/api/login';
 
   registerUser(user: User) {
-    return this.http.post<User>(this._registerUrl, user);
+    return this.http.post<any>(this._registerUrl, user);
   }
 
   loginUser(user: User) {
-    return this.http.post<User>(this._loginUrl, user);
+    return this.http.post<any>(this._loginUrl, user);
   }
 }

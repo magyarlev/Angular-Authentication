@@ -102,3 +102,46 @@
 - létrehozunk egy servicet ami lekéri a backendről a normál és a special eventeket
 
 - a megfelelő komponensben feliratkozunk
+
+#### 13. events component
+
+- a normál és a special event komponenseket feltöltjük htmllel
+
+- az eventsserviceből megkapjuk az eventketet és ngFor-ral kilistázzuk
+
+#### 14. authentication
+
+- authenticated user:
+
+  - olyan felhasználó akinek az adatai az adatbázisban vannak
+
+- folyamat:
+  - a frontenden regisztrálunk
+  - a backend automatikusan generál egy tokent amit visszaküld a böngészőnek
+  - a böngésző eltárolja a tokent
+  - a special eventek megtekintéséhez szükséges tokent elküldjük a backendnek
+  - az validálja és elküldi az eventeket
+  - ha nincs token vagy nem érvényes a token akkor nem jeleníti küldi el az eventeket
+
+#### 15. JSON Web Tokens (JWT)
+
+- formátum:
+
+  - string
+  - header.payload.signature
+
+    - header: token típusa (JWT) és a hashing algoritmus
+    - payload: pl.: a user adatai
+    - a token hitelesítése
+
+- új token:
+
+  - npm i jsonwebtoken
+  - generálása:
+    - jwt.sign(payload, secretOrPrivateKey, [options, callback])
+  - hitelesítése:
+    - jwt.verify(token, secretOrPrivateKey, [options, callback])
+
+- a tokeneket elmentjük a localstorage-ba
+
+- a login és register oldalon ha regisztrálunk vagy bejelentkezünk akkor a routing a special events komponense navigál minket
